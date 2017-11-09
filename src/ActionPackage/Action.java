@@ -28,6 +28,7 @@ public class Action {
     private Message message=new Message();
     private List<Message> listofmessage=new ArrayList<Message>();
 
+
     public static void main(String[] args) {
         Action action=new Action();
         action.StuID=1031;
@@ -82,8 +83,7 @@ public class Action {
 
     public String SingleTea(){
         bsTeacher=dao.SingleTea(TeaID);
-        System.out.println(TeaID);
-        System.out.println(bsTeacher.getTeacher().getNickName());
+            listofbstea=dao.ProfileTea(bsTeacher.getTeaREIN().getSubject());
         return "SINGLETEA";
 
     }
@@ -119,6 +119,7 @@ public class Action {
     }
     public String TeaLog(){
         teademo=dao.TeaLog(teacher);
+        listofbstea=dao.TopTea();
         if(teademo!=null){
             return "TEASUCCESSLOG";
         }else{
@@ -126,7 +127,7 @@ public class Action {
         }
     }
     public String TeaInsert(){
-        teademo=dao.TeaInsert(teacher);
+        teademo=dao.TeaInsert(teacher,teaREIN);
         if(teademo!=null){
             return "TEASUCCESSREGIST";
         }else{
@@ -134,7 +135,7 @@ public class Action {
         }
     }
     public String StuInsert(){
-        studemo=dao.StuInsert(student);
+        studemo=dao.StuInsert(student,stuREIN);
         if(studemo!=null){
             return "STUSUCCESSREGIST";
         }else{
@@ -143,11 +144,20 @@ public class Action {
     }
     public String StuLog(){
         studemo=dao.StuLog(student);
+        listofbstea=dao.TopTea();
         if(studemo!=null){
             return "STUSUCCESSLOG";
         }else{
             return "STUFAILEDLOG";
         }
+    }
+
+    public String StuReF(){
+        return "1";
+    }
+
+    public String TeaReF(){
+        return "1";
     }
 
     public String getMess() {
@@ -317,4 +327,5 @@ public class Action {
     public void setDao(Dao dao) {
         this.dao = dao;
     }
+
 }

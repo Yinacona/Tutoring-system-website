@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="a" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: DB
@@ -26,7 +27,7 @@
     <s:iterator value="#request.teaListAndOneStu.getTeaREINS()" var="temp">
         <tr>
             <%--<td><a href='ABshow.action?ISBN=<s:property value="ISBN"/>'><s:property value="#temp.Title"/></a></td>--%>
-            <td><a href='SingleTea.action?TeaID=<s:property value="#temp.ID"/>'><s:property value="#temp.ID"/> </a> </td>
+            <td><a href='SingleTea.action?StuID=<a:property value="StuID"/>&TeaID=<s:property value="#temp.ID"/>'><s:property value="#temp.ID"/> </a> </td>
             <td><s:property value="#temp.Sex"/> </td>
             <td><s:property value="#temp.Education"/></td>
             <td><s:property value="#temp.Time"/> </td>
